@@ -1,20 +1,41 @@
-### Información del Equipo
-- **Integrantes:**
-  - Nombre 1 - Rol 1
-  - Nombre 2 - Rol 2
-  - Nombre 3 - Rol 3
-  - Nombre 4 - Rol 4
-  
-- **ODS Seleccionado:** [Número y nombre]
-- **Problema a resolver:** [Descripción breve]
+Información del Equipo
+Integrantes:
 
-### Descripción del Proyecto
-[Breve descripción de la solución IoT propuesta]
+Raimundo Liedloff Díaz - Investigación, testing y validación del problema
+Benjamín Sotomayor - Diseño del encapsulado y documentación técnica
+Andrés Ubilla Moreno - Programación, conectividad e integración IoT
+José Tomás Tabja - Hardware, montaje electrónico y pruebas del sensor
+ODS seleccionado: ODS 6: Agua limpia y saneamiento
 
-### Estado del Proyecto
-- **Versión actual:** v3.0
-- **Última actualización:** [Fecha]
-- **Estado:** Prototipo final
+Problema a resolver:
+Las familias de sectores rurales de Colina que utilizan pozos o norias pueden carecer de una herramienta doméstica sencilla que les permita detectar y visualizar cambios en la turbiedad del agua que obtienen o almacenan.
+
+Descripción del Proyecto
+Agua Clara es un dispositivo portátil de alerta preliminar que utiliza un sensor de turbiedad conectado a una placa ESP32 para detectar cambios relativos en la apariencia óptica de una muestra de agua.
+
+El sistema procesará la lectura del sensor, mostrará el resultado y un estado de alerta en una pantalla OLED, activará un actuador físico y transmitirá los datos mediante Wi-Fi a un celular o computador.
+
+El dispositivo no mide todos los parámetros asociados con la calidad del agua y no certifica potabilidad. Su propósito es advertir cambios de turbiedad y orientar al usuario para que repita la medición o solicite una evaluación complementaria cuando corresponda.
+
+Agua Clara detecta cambios de turbiedad; no certifica potabilidad.
+
+Estado del Proyecto
+Versión actual: v3.0-alpha
+Última actualización: 16 de octubre de 2026
+Estado: Prototipo Alpha IoT en desarrollo
+Avance actual
+Definición del problema y alcance actualizado
+Selección del sensor de turbiedad
+Recolección inicial de componentes
+Inspección visual preliminar del hardware
+Confirmación del modelo y pinout de la placa ESP32-S
+Verificación eléctrica del sensor de turbiedad
+Primera lectura analógica segura
+Integración de pantalla OLED
+Integración del relé como actuador
+Implementación de conectividad Wi-Fi
+Testing integrado durante cinco minutos
+Prototipo final
 
 ---
 
