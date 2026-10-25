@@ -1,101 +1,89 @@
-Información del Equipo
+Agua Clara
+
+Prototipo Alpha IoT desarrollado para TEI201, Taller de Diseño en Ingeniería, de la Universidad Adolfo Ibáñez.
+
+Información del equipo
 Integrantes:
+Raimundo Liedloff Díaz: montaje electrónico y pruebas del sensor.
 
-Raimundo Liedloff Díaz - Investigación, testing y validación del problema
-Benjamín Sotomayor - Diseño del encapsulado y documentación técnica
-Andrés Ubilla Moreno - Programación, conectividad e integración IoT
-José Tomás Tabja - Hardware, montaje electrónico y pruebas del sensor
-ODS seleccionado: ODS 6: Agua limpia y saneamiento
+Benjamín Sotomayor: investigación, testing y validación del problema.
 
-Problema a resolver:
-Las familias de sectores rurales de Colina que utilizan pozos o norias pueden carecer de una herramienta doméstica sencilla que les permita detectar y visualizar cambios en la turbiedad del agua que obtienen o almacenan.
+Andrés Ubilla Moreno: diseño del encapsulado y documentación técnica.
 
-Descripción del Proyecto
+José Tomás Tabja: programación, conectividad e integración IoT.
+
+ODS seleccionado
+ODS 6: Agua limpia y saneamiento.
+
+Problema abordado
+Las familias de sectores rurales de Colina que utilizan pozos o norias pueden carecer de una herramienta doméstica sencilla para detectar y visualizar cambios en la turbiedad del agua que obtienen o almacenan.
+
+Esta necesidad corresponde a una hipótesis del proyecto que debe validarse mediante entrevistas y pruebas con usuarios.
+
+Descripción del proyecto
 Agua Clara es un dispositivo portátil de alerta preliminar que utiliza un sensor de turbiedad conectado a una placa ESP32 para detectar cambios relativos en la apariencia óptica de una muestra de agua.
 
-El sistema procesará la lectura del sensor, mostrará el resultado y un estado de alerta en una pantalla OLED, activará un actuador físico y transmitirá los datos mediante Wi-Fi a un celular o computador.
-
-El dispositivo no mide todos los parámetros asociados con la calidad del agua y no certifica potabilidad. Su propósito es advertir cambios de turbiedad y orientar al usuario para que repita la medición o solicite una evaluación complementaria cuando corresponda.
+El sistema procesa la lectura del sensor, muestra el resultado, activa un actuador físico y transmite información mediante Wi-Fi a un celular o computador.
 
 Agua Clara detecta cambios de turbiedad; no certifica potabilidad.
 
-Estado del Proyecto
-Versión actual: v3.0-alpha
-Última actualización: 16 de octubre de 2026
-Estado: Prototipo Alpha IoT en desarrollo
-Avance actual
-Definición del problema y alcance actualizado
-Selección del sensor de turbiedad
-Recolección inicial de componentes
-Inspección visual preliminar del hardware
-Confirmación del modelo y pinout de la placa ESP32-S
-Verificación eléctrica del sensor de turbiedad
-Primera lectura analógica segura
-Integración de pantalla OLED
-Integración del relé como actuador
-Implementación de conectividad Wi-Fi
-Testing integrado durante cinco minutos
-Prototipo final
+El prototipo no detecta microorganismos, sustancias químicas ni todos los parámetros asociados con la calidad del agua.
 
----
+Arquitectura del sistema
+Muestra de agua → sensor de turbiedad → ESP32 → procesamiento → actuador → Wi-Fi → celular o computador.
 
-##  Estructura del Repositorio
-```
-├── hardware/          # Circuitos, esquemas y BOM
-├── software/          # Código Arduino y librerías
-├── diseno_3d/        # Modelos Fusion 360 y renders
-├── testing/          # Validación con usuarios
-├── documentacion/    # Reportes y presentación
-└── iteraciones/      # Historial de versiones
-```
+Estado actual
 
----
+Versión: v3.0-alpha
+Estado: prototipo Alpha IoT en desarrollo
+Última actualización: 25 de octubre de 2026
 
-##  Inicio Rápido
+Avances completados
 
-### Requisitos Previos
-- Arduino IDE 2.x
-- Fusion 360
-- [Otras herramientas necesarias]
+Definición del problema y alcance.
+Selección del sensor de turbiedad.
+Recolección inicial de componentes.
+Código inicial para lectura analógica.
+Modelo 3D conceptual inicial.
+Inspección visual del montaje.
 
-### Instalación
-1. Clonar el repositorio
-2. Instalar librerías (ver `software/librerias/`)
-3. Cargar código en ESP32/Arduino
-4. [Pasos adicionales]
+Avances en desarrollo
 
----
+Confirmar eléctricamente las conexiones del sensor.
+Verificar la salida analógica con multímetro.
+Confirmar el divisor de voltaje.
+Obtener lecturas estables por GPIO34.
+Integrar la pantalla OLED.
+Integrar el relé como actuador.
+Implementar la conectividad Wi-Fi.
+Ejecutar una prueba continua de cinco minutos.
+Documentar los resultados finales.
 
-##  Checklist de Entrega
+Estructura del repositorio
 
-### Hardware ✓
-- [ ] Esquema del circuito (Fritzing/Wokwi)
-- [ ] BOM completo
-- [ ] Fotos de alta resolución
+software: código del ESP32.
+hardware: componentes, conexiones y diagramas.
+testing: datos y evidencias de las pruebas.
+iteraciones: problemas, cambios y mejoras.
+diseno_3d: modelo conceptual del encapsulado.
+documentacion: material complementario.
 
-### Software ✓
-- [ ] Código comentado
-- [ ] Librerías documentadas
-- [ ] Manual de instalación
+Componentes principales
 
-### Diseño 3D ✓
-- [ ] Archivos Fusion 360 (.f3d) con TODOS los componentes
-- [ ] Renders de alta calidad (1+ ángulos)
-- [ ] Planos técnicos
+Placa basada en ESP32 con dos relés integrados.
+Sensor óptico de turbiedad.
+Módulo electrónico con salida analógica y digital.
+Pantalla OLED I2C.
+Protoboard.
+Resistencias para protección de la entrada analógica.
+Cables Dupont.
+Cable Micro-USB.
+Multímetro.
 
-### Testing ✓
-- [ ] Reporte de testing con usuarios (mín. 5)
-- [ ] Evidencias fotográficas/videos
-- [ ] Datos cuantitativos
+Advertencias de seguridad
 
-### Documentación ✓
-- [ ] Reporte final (máx. 15 páginas)
-- [ ] Presentación (10 min)
-
----
-
-
----
-
-##  Licencia
-Este proyecto es desarrollado como parte del curso TEI201 - Facultad de Ingenieria y Ciencias - Universidad Adolfo Ibañez
+No conectar una señal superior al rango permitido por el ESP32.
+No conectar cargas de 220 V a los relés.
+No sumergir el módulo electrónico ni la placa ESP32.
+Solo la sección diseñada de la sonda debe entrar en contacto con el agua.
+No declarar resultados en NTU sin una calibración válida.
