@@ -1,0 +1,65 @@
+Reporte de testing de Agua Clara
+1. Objetivo
+Evaluar la capacidad del prototipo para detectar cambios relativos de turbiedad y comprobar la estabilidad de la integración entre sensor, procesamiento, actuador y conectividad.
+
+2. Configuración utilizada
+Placa de control: ESP32-S con dos relés integrados.
+Entrada analógica utilizada: GPIO34.
+Sensor: sensor óptico de turbiedad.
+Lectura: promedio de 20 mediciones.
+Resolución ADC configurada: 12 bits.
+Resultado registrado: valor RAW.
+Alimentación del sensor: pendiente de confirmar mediante multímetro.
+Divisor de voltaje: pendiente de validar.
+3. Pruebas iniciales
+Sesión	Muestra	Lectura
+1	Agua limpia	Menos de 70 RAW
+1	Agua turbia	109,69 RAW promedio
+2	Agua limpia	Aproximadamente 210 RAW
+2	Agua turbia	Aproximadamente 195 RAW
+4. Análisis de las pruebas iniciales
+Los resultados no fueron consistentes entre sesiones.
+
+En la primera sesión, la muestra turbia produjo una lectura mayor. En la segunda sesión, la muestra limpia produjo una lectura mayor.
+
+La lectura del agua limpia también cambió desde menos de 70 RAW hasta aproximadamente 210 RAW.
+
+Por lo tanto, estos resultados no permiten definir todavía umbrales confiables de clasificación.
+
+5. Problemas detectados
+Conexiones del divisor de voltaje sin verificar.
+Valores de las resistencias pendientes de medir.
+Voltaje máximo de la salida analógica pendiente de confirmar.
+Posición de la sonda no documentada en las primeras pruebas.
+Condiciones experimentales diferentes entre sesiones.
+Falta de tres o más repeticiones por muestra.
+6. Correcciones propuestas
+Medir el voltaje entre V y G.
+Medir el voltaje entre A y G.
+Medir las resistencias.
+Verificar el voltaje que llega a GPIO34.
+Mantener fija la profundidad y orientación de la sonda.
+Realizar tres mediciones por muestra.
+Registrar mínimo, máximo y promedio.
+Ejecutar una prueba integrada durante cinco minutos.
+7. Prueba controlada
+Completar después del ensayo:
+
+Muestra	Promedio RAW	Mínimo	Máximo	Observación
+A	Pendiente	Pendiente	Pendiente	Agua sin material agregado
+B	Pendiente	Pendiente	Pendiente	Turbiedad intermedia
+C	Pendiente	Pendiente	Pendiente	Turbiedad alta
+8. Prueba de integración
+Elemento	Resultado
+Sensor	Pendiente
+Procesamiento	Pendiente
+OLED	Pendiente
+Actuador	Pendiente
+Wi-Fi	Pendiente
+Funcionamiento durante 5 minutos	Pendiente
+9. Conclusión actual
+El prototipo ha entregado lecturas RAW, pero las pruebas iniciales todavía no presentan repetibilidad suficiente para fijar umbrales.
+
+Las mediciones no corresponden a NTU y no permiten determinar potabilidad.
+
+La validación continuará mediante pruebas controladas y verificación eléctrica del montaje.
