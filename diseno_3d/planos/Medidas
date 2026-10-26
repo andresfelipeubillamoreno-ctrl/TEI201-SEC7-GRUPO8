@@ -1,0 +1,25 @@
+Encapsulado conceptual
+Estado
+Modelo conceptual v01 desarrollado en Autodesk Fusion.
+
+Dimensiones iniciales
+Largo exterior: 90 mm.
+Ancho exterior: 65 mm.
+Altura aproximada: 30 mm.
+Espesor de paredes: 2 mm.
+Elementos considerados
+Caja inferior.
+Tapa superior independiente.
+Ventana para pantalla OLED.
+Espacio para la placa ESP32-S.
+Salida lateral pendiente de adaptar al cable del sensor.
+Acceso Micro-USB pendiente.
+Funcionamiento
+La sonda de turbiedad permanece fuera del encapsulado y entra en contacto con la muestra. El ESP32, la protoboard y el módulo electrónico deben mantenerse secos.
+
+Pendientes
+Añadir soportes internos para la placa.
+Confirmar posición del puerto Micro-USB.
+Diseñar fijación de la OLED.
+Diseñar cierre de la tapa.
+Verificar dimensiones con los componentes físicos.
