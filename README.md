@@ -28,7 +28,10 @@ Muestra de agua → sensor de turbiedad → ESP32 → procesamiento → actuador
 Estado actual:
 Versión: v3.0-alpha
 Estado: prototipo Alpha IoT en desarrollo
-Última actualización: 25 de octubre de 2026
+Última actualización: 25 de octubre de 2026.
+
+Actualmente, el prototipo se encuentra en una etapa donde el funcionamiento es inestable y las lecturas del sensor entregan resultados irregulares (por ejemplo, arrojando valores muy distintos para la misma muestra de agua limpia o turbia). Para intentar corregir estos errores y cumplir con la evidencia de testing, hemos implementado los siguientes cambios: Modificamos las conexiones físicas y cambiamos los cables en múltiples ocasiones buscando reducir la inestabilidad. Ajustamos y reescribimos el código de programación varias veces para probar distintas formas de leer el sensor. Realizamos pruebas continuas rearmando el circuito base. 
+Aunque el prototipo aún no entrega los resultados óptimos y presenta fallos en su operación, estos problemas están documentados como parte del proceso de aprendizaje del Avance #2 y esperamos estabilizar el sistema para las próximas entregas.
 
 Avances completados:
 Definición del problema y alcance.
