@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "author": "Proyecto Agua Clara - TEI201 UAI",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-text", "id": "titulo", "top": -102, "left": 58,
+      "attrs": { "text": "AGUA CLARA | Prototipo alpha - Simulacion Wokwi" }
+    },
+    {
+      "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 12, "left": 235,
+      "attrs": {}
+    },
+    {
+      "type": "board-ssd1306", "id": "oled", "top": 5, "left": 520,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    {
+      "type": "wokwi-potentiometer", "id": "turbidez", "top": 328, "left": 67,
+      "attrs": { "value": "850" }
+    },
+    {
+      "type": "wokwi-text", "id": "sensorNota", "top": 427, "left": 18,
+      "attrs": { "text": "Perilla = TURBIEDAD SIMULADA\nGirar para cambiar RAW (GPIO34)" }
+    },
+    {
+      "type": "wokwi-relay-module", "id": "rele1", "top": 313, "left": 475,
+      "attrs": { "transistor": "pnp" }
+    },
+    {
+      "type": "wokwi-relay-module", "id": "rele2", "top": 515, "left": 475,
+      "attrs": { "transistor": "pnp" }
+    },
+    {
+      "type": "wokwi-text", "id": "notaRele1", "top": 288, "left": 473,
+      "attrs": { "text": "Rele 1 - aviso (GPIO13)" }
+    },
+    {
+      "type": "wokwi-text", "id": "notaRele2", "top": 490, "left": 473,
+      "attrs": { "text": "Rele 2 - alarma (GPIO15)" }
+    },
+    {
+      "type": "wokwi-resistor", "id": "resAm", "top": 349, "left": 710,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-resistor", "id": "resRo", "top": 552, "left": 710,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-led", "id": "ledAm", "top": 336, "left": 837,
+      "attrs": { "color": "yellow", "label": "VERIFICAR" }
+    },
+    {
+      "type": "wokwi-led", "id": "ledRo", "top": 540, "left": 837,
+      "attrs": { "color": "red", "label": "TURBIEDAD ALTA" }
+    },
+    {
+      "type": "wokwi-text", "id": "advertencia", "top": 674, "left": 185,
+      "attrs": { "text": "SIMULACION: el potenciometro sustituye la sonda real. No certifica potabilidad." }
+    }
+  ],
+  "connections": [
+    ["esp:TX0", "$serialMonitor:RX", "", []],
+    ["esp:RX0", "$serialMonitor:TX", "", []],
+
+    ["esp:3V3", "oled:VCC", "red", ["h44", "v-55", "h145"]],
+    ["esp:GND.1", "oled:GND", "black", ["h62", "v-84", "h123"]],
+    ["esp:D19", "oled:SDA", "green", ["h49", "v-68", "h120"]],
+    ["esp:D18", "oled:SCL", "blue", ["h36", "v-44", "h108"]],
+
+    ["turbidez:VCC", "esp:3V3", "red", ["v-26", "h95", "v-252"]],
+    ["turbidez:GND", "esp:GND.2", "black", ["v29", "h107", "v-227"]],
+    ["turbidez:SIG", "esp:D34", "orange", ["h115", "v-81"]],
+
+    ["esp:VIN", "rele1:VCC", "red", ["h-22", "v280", "h225"]],
+    ["esp:GND.1", "rele1:GND", "black", ["h48", "v240", "h176"]],
+    ["esp:D13", "rele1:IN", "yellow", ["h48", "v198", "h185"]],
+
+    ["esp:VIN", "rele2:VCC", "red", ["h-36", "v458", "h250"]],
+    ["esp:GND.1", "rele2:GND", "black", ["h66", "v436", "h148"]],
+    ["esp:D15", "rele2:IN", "purple", ["h43", "v425", "h180"]],
+
+    ["esp:VIN", "rele1:COM", "red", ["h-55", "v267", "h280"]],
+    ["rele1:NO", "resAm:1", "yellow", ["h55"]],
+    ["resAm:2", "ledAm:A", "yellow", ["h36"]],
+    ["ledAm:C", "esp:GND.1", "black", ["v-74", "h-380", "v-58"]],
+
+    ["esp:VIN", "rele2:COM", "red", ["h-72", "v500", "h282"]],
+    ["rele2:NO", "resRo:1", "red", ["h51"]],
+    ["resRo:2", "ledRo:A", "red", ["h35"]],
+    ["ledRo:C", "esp:GND.1", "black", ["v53", "h-359", "v-565"]]
+  ],
+  "serialMonitor": {
+    "display": "auto",
+    "newline": "lf"
+  },
+  "dependencies": {}
+}
