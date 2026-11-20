@@ -28,11 +28,11 @@ El archivo BOM debe incluir las siguientes columnas:
 
 ## Presupuesto Total
 
-**Costo Total Estimado:** $[XXXXX] CLP
+**Costo Total Estimado:** $[25.000] CLP
 
 ### Desglose por Categoría
-- Microcontrolador: $X,XXX
-- Sensores: $X,XXX
-- Actuadores: $X,XXX
-- Estructura/Encapsulado: $X,XXX
-- Otros: $X,XXX
+- Microcontrolador: $0
+- Sensores: $13.000
+- Actuadores: $0
+- Estructura/Encapsulado: $0
+- Otros: $12.000
