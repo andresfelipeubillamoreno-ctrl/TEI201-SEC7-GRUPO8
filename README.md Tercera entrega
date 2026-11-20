@@ -1,1 +1,52 @@
+ACTUALIZACIÓN AVANCE #3: PROTOTIPO IOT COMPLETO Y REDISEÑO FINAL
 
+Este documento sintetiza el estado actual del proyecto Agua Clara, consolidando los avances acumulados desde las iteraciones previas y detallando las modificaciones críticas de hardware, diseño mecánico y software implementadas para la entrega final del taller (TEI201).
+
+1. Estado Actual del Proyecto
+
+Hasta la fecha, Agua Clara ha evolucionado desde una prueba de concepto en protoboard hacia un sistema IoT integral capaz de cumplir el ciclo completo de datos: captura continua, almacenamiento persistente, visualización en tiempo real y generación de alertas para la toma de decisiones.
+
+- Arquitectura Base Validada: El núcleo del sistema opera mediante un microcontrolador ESP32 que gestiona la adquisición de datos analógicos, la visualización local en una pantalla OLED I2C y la activación de un módulo de 2 relés para control de alertas o corte de flujo.
+- Respaldo Documental e Iterativo: Contamos con un historial de pruebas (Avances #1 y #2) donde se identificaron las limitaciones de ruido eléctrico y deriva de lectura en agua en reposo, lo que sirvió de base empírica para las mejoras actuales.
+- Integración IoT: El sistema ya no depende únicamente de lecturas locales; ahora transmite telemetría vía Wi-Fi hacia un repositorio de datos persistente y despliega un dashboard operativo accesible para el usuario final.
+
+2. Modificaciones Implementadas para la Tercera Entrega
+
+Para alcanzar los estándares de estabilidad, precisión y mantenibilidad exigidos en el prototipo final, se ejecutaron tres cambios mayores respecto a la versión anterior:
+
+A. Adquisición e Integración de un Nuevo Sensor de Turbidez (Hardware)
+- Diagnóstico previo: El sensor utilizado en el Avance #2 presentaba inestabilidad térmica y saltos erráticos en la señal cruda (oscilaciones entre 70 y 210 RAW sin cambios en la muestra), lo que comprometía la confiabilidad de las alertas.
+- Modificación realizada: Se adquirió e integró un nuevo módulo sensor óptico de turbidez ([Indicar modelo del nuevo sensor]).
+- Impacto técnico:
+  * Se recalibró la etapa de acondicionamiento de señal (divisor resistivo) para proteger la entrada analógica (GPIO34) del ESP32 (3.3V máximo) aprovechando todo el rango dinámico del sensor.
+  * Se actualizó la Lista de Materiales (BOM) incorporando los costos reales de adquisición del nuevo componente, resistencias y cableado.
+  * Se ajustaron las curvas de conversión en el firmware para transformar las lecturas crudas en indicadores claros de calidad de agua.
+
+B. Rediseño del Encapsulado 3D y Diseño para la Reparación (Diseño 3D)
+- Diagnóstico previo: La primera versión de la carcasa estaba ajustada a las dimensiones del sensor antiguo y no contemplaba holguras suficientes para el ordenamiento interno de cables ni un acceso rápido para mantenimiento en campo.
+- Modificación realizada: Se rediseñó por completo la caja exterior en Fusion 360 (diseno_3d/), adaptando la geometría al nuevo sensor y consolidando un Gemelo 3D con los volúmenes reales de todos los componentes internos (ESP32, sensor, pantalla OLED, relés y cableado).
+- Impacto técnico:
+  * Diseño para la reparación: Se eliminaron fijaciones permanentes como pegamentos. La nueva tapa superior utiliza fijaciones desmontables mediante tornillería y conectores modulares (Dupont/JST), permitiendo abrir el encapsulado y reemplazar cualquier componente en menos de 2 minutos sin dañar la estructura.
+  * Protección y estanqueidad: Se aisló la electrónica de control y la etapa de potencia (relés) respecto a la zona de inmersión de la sonda óptica, evitando riesgos de cortocircuito por humedad.
+  * Planos técnicos: Se actualizaron las cotas funcionales, tolerancias de impresión 3D y vistas ortogonales.
+
+C. Consolidación del Ciclo de Datos y Validación en Vivo (Software y Testing)
+- Modificación realizada: Se actualizó el firmware del ESP32 (software/src/) para integrar un filtro de suavizado de señal adaptado al nuevo sensor, junto con la rutina de envío continuo a la base de datos y visualización en el dashboard.
+- Impacto técnico:
+  * Persistencia y Visualización: Los datos capturados quedan almacenados históricamente y se grafican en tiempo real con umbrales visuales de advertencia.
+  * Protocolo de Validación: Se ejecutaron nuevas pruebas comparativas con muestras de agua limpia y agua con distintos grados de turbidez, demostrando la reducción de ruido frente al Avance #2 y validando que el sistema permite tomar decisiones concretas sobre la calidad del agua.
+
+3. Resumen Comparativo: Avance #2 vs. Entrega Final (Avance #3)
+
+- Sensor de Turbidez:
+  * Avance #2: Sensor inicial con ruido elevado y deriva en lecturas.
+  * Entrega Final: Nuevo sensor óptico integrado, calibrado y estabilizado.
+- Encapsulado 3D:
+  * Avance #2: Carcasa v1 ajustada al montaje preliminar.
+  * Entrega Final: Nueva caja rediseñada con Gemelo 3D completo y apertura desmontable para reparación.
+- Visualización y Datos:
+  * Avance #2: Lectura local en pantalla OLED y monitor serial.
+  * Entrega Final: Dashboard IoT en tiempo real y almacenamiento persistente de datos históricos.
+- Documentación y BOM:
+  * Avance #2: Estructura base y listado de componentes sin costos.
+  * Entrega Final: BOM completo con costos, planos acotados, nuevas evidencias fotográficas y declaración FUENTES.md.
