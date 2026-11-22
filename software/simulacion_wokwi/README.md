@@ -45,7 +45,7 @@
 | 1800 a 2799 | Verificar muestra | Relé 1 y LED amarillo |
 | < 1800 | Turbiedad elevada | Relé 2 y LED rojo |
 
-Los límites 2800/1800 son **provisionales para la simulación**. No son valores NTU ni se deben presentar como umbrales sanitarios.
+Los límites 2800/1800 son **provisionales para la simulación**. No son valores NTU ni se deben presentar como umbrales sanitarios. El firmware del prototipo físico (`software/src/agua_clara.ino`) usa los umbrales calibrados con el sensor real: 2273 y 2238 RAW.
 
 ## Diferencia frente al prototipo físico
 
