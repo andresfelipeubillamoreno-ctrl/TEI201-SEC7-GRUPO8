@@ -41,4 +41,4 @@ Firmware del ESP32 que lee el sensor de turbiedad, clasifica el agua en tres est
 | `MODO_SIMULACION` | `true` usa valores simulados para probar OLED y web sin sensor |
 | `USAR_RELES` | Activa los relés de la placa (desactivado en la versión actual) |
 | `PIN_TURBIDEZ` | Pin analógico del sensor (GPIO34) |
-| `LIMITE_1`, `LIMITE_2` | Umbrales RAW entre estados (provisionales, en calibración) |
+| `LIMITE_1`, `LIMITE_2` | Umbrales RAW entre estados: 2273 (≈2,030 V) y 2238 (≈2,000 V), calibrados con las pruebas del SEN0189 |

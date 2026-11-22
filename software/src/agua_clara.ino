@@ -16,10 +16,13 @@ const int RELE_2 = 15;
 const int RELE_ACTIVO = HIGH;
 const int RELE_INACTIVO = LOW;
 
-// LIMITES PROVISIONALES DE SIMULACION
-// TODAVIA NO ESTAN CALIBRADOS
-const int LIMITE_1 = 2800;
-const int LIMITE_2 = 1800;
+// LIMITES CALIBRADOS CON EL SENSOR DFRobot SEN0189 (prueba 20-11-2026)
+// Agua limpia: ~2286 RAW (2,041 V) | Agua turbia: ~2221 RAW (1,986 V)
+// LIMITE_1 = 2273 RAW (~2,030 V) -> desde aqui hacia arriba: BAJA TURBIEDAD
+// LIMITE_2 = 2238 RAW (~2,000 V) -> bajo este valor: TURBIEDAD ELEVADA
+// Entre ambos: VERIFICAR. Provisionales: confirmar con mas muestras.
+const int LIMITE_1 = 2273;
+const int LIMITE_2 = 2238;
 
 // OLED
 Adafruit_SSD1306 oled(128, 64, &Wire, -1);
@@ -38,7 +41,7 @@ unsigned long ultimoCambio = 0;
 int pasoSimulacion = 0;
 
 const int valoresSimulados[3] = {
-  3200, 2400, 1200
+  2290, 2255, 2210
 };
 
 // =======================================

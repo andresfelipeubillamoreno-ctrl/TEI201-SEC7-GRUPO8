@@ -9,7 +9,7 @@ Este es el código principal de nuestro prototipo. Como tuvimos varios problemas
 ## Variables Clave
 - `PIN_TURBIDEZ = 34`: Es el pin analógico donde conectamos el cable de señal del sensor de turbiedad.
 - `MODO_SIMULACION` y `USAR_RELES`: Son "interruptores" (true/false) que dejamos en el código. Nos sirvieron mucho para probar la pantalla y el Wi-Fi cuando los cables físicos fallaban.
-- `LIMITE_1` y `LIMITE_2`: Son los números de corte (RAW) que deciden cuándo cambiar de estado. Todavía los estamos calibrando según los resultados de nuestras pruebas.
+- `LIMITE_1` y `LIMITE_2`: Son los números de corte (RAW) que deciden cuándo cambiar de estado. Están calibrados con las pruebas del sensor SEN0189: `LIMITE_1 = 2273` (≈2,030 V) y `LIMITE_2 = 2238` (≈2,000 V). Con eso el agua limpia (~2286) da "Baja Turbiedad" y la turbia (~2221) da "Turbiedad Elevada".
 
 ## Lógica Principal (Funciones)
 - **`leerSensor()`:** En vez de tomar un solo dato (que nos daba saltos súper locos), esta función toma 20 lecturas rápidas y saca un promedio. Esto nos ayudó a estabilizar un poco los números inestables que estábamos recibiendo.
