@@ -133,7 +133,7 @@ Para la entrega final se consolidó el ciclo completo de datos (captura → alma
 ### 7.2 Cambio A – Nuevo sensor de turbiedad (hardware)
 
 - **Diagnóstico previo:** el sensor del Avance #2 presentaba inestabilidad térmica y saltos erráticos en la señal (70–210 RAW sin cambios en la muestra).
-- **Modificación:** se adquirió e integró un nuevo módulo sensor óptico de turbiedad *(modelo: [completar])*. Fotos en [`hardware/`](hardware/).
+- **Modificación:** se adquirió e integró un nuevo sensor de turbiedad **DFRobot SEN0189** (Gravity Analog Turbidity Sensor). Fotos en [`hardware/`](hardware/).
 - **Impacto técnico:**
   - Se recalibró el divisor resistivo para proteger la entrada analógica GPIO34 del ESP32 (máx. 3,3 V) aprovechando todo el rango dinámico del sensor.
   - Se actualizó la lista de materiales (BOM) con los costos reales del nuevo sensor, resistencias y cableado.
@@ -177,7 +177,7 @@ Para la entrega final se consolidó el ciclo completo de datos (captura → alma
 ### Componentes principales
 
 - Placa ESP32 (ESP32-S) con módulo de 2 relés
-- Sensor óptico de turbiedad con módulo electrónico (salida analógica y digital)
+- Sensor de turbiedad DFRobot SEN0189 con su módulo electrónico (salida analógica y digital)
 - Pantalla OLED I2C
 - Protoboard, resistencias (divisor de voltaje para proteger la entrada analógica) y cables Dupont
 - Cable Micro-USB
