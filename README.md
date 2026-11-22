@@ -45,12 +45,12 @@ Esta necesidad corresponde a una hipótesis del proyecto que debe validarse medi
 
 Agua Clara es un dispositivo portátil de alerta preliminar que utiliza un sensor de turbiedad conectado a una placa ESP32 para detectar cambios relativos en la apariencia óptica de una muestra de agua.
 
-El sistema procesa la lectura del sensor, muestra el resultado en una pantalla OLED, activa un actuador físico (relé) y transmite la información mediante Wi-Fi a un celular o computador.
+El sistema procesa la lectura del sensor, muestra el resultado en una pantalla OLED y lo transmite mediante Wi-Fi a una página web que se puede ver desde un celular o computador.
 
 ## 4. Arquitectura del sistema
 
 ```
-Muestra de agua → Sensor de turbiedad → ESP32 → Procesamiento → Pantalla OLED + Relé → Wi-Fi → Dashboard (celular / computador)
+Muestra de agua → Sensor de turbiedad → ESP32 → Procesamiento → Pantalla OLED + Wi-Fi → Página web en tiempo real (celular / computador)
 ```
 
 ## 5. Estado actual
@@ -58,10 +58,10 @@ Muestra de agua → Sensor de turbiedad → ESP32 → Procesamiento → Pantalla
 | | |
 |---|---|
 | **Versión** | v3.0 – Entrega final |
-| **Estado** | Prototipo IoT completo: captura continua, almacenamiento persistente, visualización en tiempo real y alertas |
+| **Estado** | Prototipo IoT: captura continua, visualización local (OLED) y remota (web por Wi-Fi) en tiempo real, con estados de alerta |
 | **Entregas incluidas** | Entrega 1 (Avance #2) y Entrega 2 (Avance #3) |
 
-Agua Clara evolucionó desde una prueba de concepto en protoboard (Avance #2), con lecturas inestables, hacia un sistema IoT integral con un nuevo sensor, una carcasa rediseñada y un dashboard con datos históricos (Avance #3).
+Agua Clara evolucionó desde una prueba de concepto en protoboard (Avance #2), con lecturas inestables, hacia un sistema IoT integral con un nuevo sensor, una carcasa rediseñada y una página web con el estado del agua en tiempo real (Avance #3).
 
 ---
 
@@ -123,12 +123,12 @@ Datos y reporte completo: [`testing/`](testing/).
 
 ## 7. Entrega 2 – Avance #3: Prototipo IoT completo y rediseño final
 
-Para la entrega final se consolidó el ciclo completo de datos (captura → almacenamiento → visualización → alerta) y se hicieron tres cambios mayores respecto al Avance #2.
+Para la entrega final se consolidó el ciclo de datos (captura → procesamiento → visualización → alerta) y se hicieron tres cambios mayores respecto al Avance #2.
 
 ### 7.1 Arquitectura base validada
 
-- **ESP32** gestiona la adquisición de datos analógicos, la visualización local en la **pantalla OLED I2C** y la activación de un **módulo de 2 relés** para alertas o corte de flujo.
-- **Integración IoT:** el sistema ya no depende solo de lecturas locales; transmite telemetría vía Wi-Fi hacia un almacenamiento de datos persistente y despliega un **dashboard** accesible para el usuario.
+- **ESP32** gestiona la adquisición de datos analógicos, la visualización local en la **pantalla OLED I2C** y la clasificación del agua en tres estados (baja turbiedad, verificar, turbiedad elevada).
+- **Integración IoT:** el sistema ya no depende solo de lecturas locales; el ESP32 crea su propia red Wi-Fi ("AguaClara") y levanta una **página web** que se actualiza cada 3 segundos y cambia de color según el estado del agua.
 
 ### 7.2 Cambio A – Nuevo sensor de turbiedad (hardware)
 
@@ -136,16 +136,16 @@ Para la entrega final se consolidó el ciclo completo de datos (captura → alma
 - **Modificación:** se adquirió e integró un nuevo sensor de turbiedad **DFRobot SEN0189** (Gravity Analog Turbidity Sensor). Fotos en [`hardware/`](hardware/).
 - **Impacto técnico:**
   - Se recalibró el divisor resistivo para proteger la entrada analógica GPIO34 del ESP32 (máx. 3,3 V) aprovechando todo el rango dinámico del sensor.
-  - Se actualizó la lista de materiales (BOM) con los costos reales del nuevo sensor, resistencias y cableado.
+  - Se actualizó la lista de materiales (BOM) con los costos reales del nuevo sensor, resistencias y cableado (costo total ≈ $25.000 CLP, ver [`hardware/bom/`](hardware/bom/)).
   - Se ajustaron las curvas de conversión en el firmware para transformar las lecturas crudas en indicadores claros de calidad de agua.
 
 ### 7.3 Cambio B – Rediseño del encapsulado 3D y diseño para la reparación
 
 - **Diagnóstico previo:** la carcasa v1 estaba ajustada al sensor antiguo y no tenía holguras para ordenar cables ni acceso rápido para mantenimiento.
-- **Modificación:** se rediseñó la caja en Fusion 360 ([`diseno_3d/`](diseno_3d/)), adaptada al nuevo sensor, con un **gemelo 3D** que incluye los volúmenes reales de todos los componentes internos (ESP32, sensor, OLED, relés y cableado).
+- **Modificación:** se rediseñó la caja en Fusion 360 ([`diseno_3d/`](diseno_3d/)), adaptada al nuevo sensor, con un **gemelo 3D** que incluye los volúmenes reales de todos los componentes internos (ESP32, sensor, OLED y cableado).
 - **Impacto técnico:**
   - **Diseño para la reparación:** sin pegamentos; la tapa superior usa tornillos y conectores modulares (Dupont/JST), lo que permite abrir el encapsulado y cambiar cualquier componente en menos de 2 minutos.
-  - **Protección y estanqueidad:** la electrónica de control y los relés quedan aislados de la zona de inmersión de la sonda, evitando cortocircuitos por humedad.
+  - **Protección y estanqueidad:** la electrónica de control queda aislada de la zona de inmersión de la sonda, evitando cortocircuitos por humedad.
   - **Planos técnicos:** cotas funcionales, tolerancias de impresión 3D y vistas ortogonales actualizadas ([`diseno_3d/planos/`](diseno_3d/planos/)).
 
 | Vista exterior | Vista interior | Tapa con OLED |
@@ -154,9 +154,9 @@ Para la entrega final se consolidó el ciclo completo de datos (captura → alma
 
 ### 7.4 Cambio C – Ciclo de datos y validación (software y testing)
 
-- **Modificación:** se actualizó el firmware del ESP32 ([`software/src/`](software/src/)) con un filtro de suavizado adaptado al nuevo sensor, el envío continuo de datos y la visualización en el dashboard.
+- **Modificación:** se actualizó el firmware del ESP32 ([`software/src/`](software/src/)) con un filtro de promedio de 20 lecturas adaptado al nuevo sensor, el envío continuo de datos y la visualización en la página web.
 - **Impacto técnico:**
-  - **Persistencia y visualización:** los datos quedan guardados históricamente y se grafican en tiempo real con umbrales visuales de advertencia.
+  - **Visualización en tiempo real:** la lectura y el estado del agua se muestran en la OLED y en la página web, con colores según los umbrales de advertencia.
   - **Protocolo de validación:** nuevas pruebas comparativas con agua limpia y distintos grados de turbiedad, que muestran la reducción de ruido frente al Avance #2 y permiten tomar decisiones concretas sobre el agua.
 
 #### Resultados con el sensor DFRobot SEN0189 (20-11-2026)
@@ -196,8 +196,8 @@ Datos: [`testing/datos/pruebas_sen0189_2026-11-20.csv`](testing/datos/pruebas_se
 |---|---|---|
 | **Sensor de turbiedad** | Sensor inicial con ruido elevado y deriva en las lecturas | Nuevo sensor óptico integrado, calibrado y estabilizado |
 | **Encapsulado 3D** | Carcasa v1 ajustada al montaje preliminar | Caja rediseñada con gemelo 3D completo y apertura desmontable |
-| **Visualización y datos** | Lectura local en OLED y monitor serial | Dashboard IoT en tiempo real y datos históricos |
-| **Documentación y BOM** | Estructura base y componentes sin costos | BOM con costos, planos acotados, nuevas fotos y [`FUENTES.md`](FUENTES.md) |
+| **Visualización y datos** | Lectura local en OLED y monitor serial | OLED + página web por Wi-Fi en tiempo real, con estados de alerta |
+| **Documentación y BOM** | Estructura base y componentes sin costos | BOM con costos (≈ $25.000 CLP), planos acotados, nuevas fotos y [`FUENTES.md`](FUENTES.md) |
 
 ---
 
@@ -205,7 +205,7 @@ Datos: [`testing/datos/pruebas_sen0189_2026-11-20.csv`](testing/datos/pruebas_se
 
 ### Componentes principales
 
-- Placa ESP32 (ESP32-S) con módulo de 2 relés
+- Placa ESP32 (ESP32-S) con módulo de 2 relés integrado (conectado, pero desactivado en el firmware actual: `USAR_RELES = false`)
 - Sensor de turbiedad DFRobot SEN0189 con su módulo electrónico (salida analógica y digital)
 - Pantalla OLED I2C
 - Protoboard, resistencias (divisor de voltaje para proteger la entrada analógica) y cables Dupont
