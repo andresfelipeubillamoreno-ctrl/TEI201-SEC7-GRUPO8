@@ -20,9 +20,7 @@ Abertura circular para la salida de la sonda o conexión del sensor de turbiedad
 Espacio interior destinado a la placa ESP32, protoboard y módulo electrónico.
 Reborde inferior de encaje para mantener la tapa alineada con la caja.
 Holgura nominal de 0,4 mm por lado entre el reborde de la tapa y el interior del cuerpo.
-Archivos separados para impresión 3D:
-AguaClara_CajaInferior.stl
-AguaClara_TapaSuperior.stl
+Caja inferior y tapa superior modeladas como cuerpos separados para imprimirse por separado.
 Funcionamiento
 
 La sonda de turbiedad permanece fuera del encapsulado y entra en contacto con la muestra de agua. El cable o conexión de la sonda atraviesa la abertura circular diseñada en uno de los extremos del case.
@@ -37,7 +35,7 @@ Material recomendado: PLA para el prototipo actual.
 Unidades del modelo: milímetros.
 Tolerancia general recomendada: ±0,3 mm.
 Holgura de encaje: 0,4 mm por lado.
-Formato de fabricación: STL.
+Formato de fabricación: STL, exportado desde el archivo de Fusion al momento de imprimir.
 Software de modelado: Autodesk Fusion.
 Pendientes
 Añadir soportes internos para la placa.

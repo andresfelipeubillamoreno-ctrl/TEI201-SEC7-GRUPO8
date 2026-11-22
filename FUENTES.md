@@ -162,7 +162,6 @@ Identificación de la falla del sensor original.
 Pruebas con el sensor de reemplazo.
 Diseño del encapsulado en Autodesk Fusion.
 Rediseño del encapsulado a partir de las dimensiones físicas.
-Archivos STL de la caja inferior y la tapa superior.
 Plano técnico del encapsulado.
 Registro de las iteraciones del proyecto.
 Documentación del repositorio.
@@ -173,8 +172,6 @@ software/src/explicacion_codigo.md
 software/src/README.md
 software/README.md
 Diseño 3D
-AguaClara_CajaInferior.stl
-AguaClara_TapaSuperior.stl
 Archivo editable de Autodesk Fusion: diseno_3d/fusion360/Agua clara Case final.f3d
 Plano técnico del encapsulado: diseno_3d/planos/planos_agua_clara.pdf
 Documentación
