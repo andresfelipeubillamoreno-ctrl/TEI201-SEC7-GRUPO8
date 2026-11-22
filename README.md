@@ -161,16 +161,30 @@ Para la entrega final se consolidó el ciclo completo de datos (captura → alma
 
 #### Resultados con el sensor DFRobot SEN0189 (20-11-2026)
 
-Lectura = promedio de 20 muestras del ADC (12 bits) por GPIO34, registrada en el monitor serial cada ~1 s.
+**Objetivo:** validar la estabilidad de lectura y la capacidad del nuevo sensor para diferenciar agua limpia de agua turbia.
 
-| Muestra | Lecturas registradas | Promedio RAW | Rango RAW | Voltaje promedio |
-|---|---|---|---|---|
-| Agua limpia | 8 | 2221 | 2211 – 2241 | 1,986 V |
-| Agua turbia | 8 | 2286 | 2284 – 2288 | 2,041 V |
+**Condiciones:** ESP32 Dev Module, ADC de 12 bits (0–4095) por GPIO34. Cada lectura es el promedio de 20 muestras tomadas cada 10 ms (`analogRead` y `analogReadMilliVolts`), reportada en el monitor serial cada ~1 s (`delay(800)`).
 
-- **Estabilidad:** con el sensor anterior la misma muestra variaba entre ~70 y ~210 RAW; con el SEN0189 la variación dentro de cada muestra es de pocas unidades (≈1 % en agua limpia y ≈0,2 % en agua turbia).
-- **Diferenciación:** las dos muestras dan lecturas distintas y que no se superponen (≈65 RAW de diferencia).
-- **Limitación:** es una sola sesión con una muestra de cada tipo. Para fijar umbrales confiables se deben repetir las pruebas con más muestras y distintos niveles de turbiedad.
+**Criterio de éxito:** variación pequeña en estado estacionario (del orden de centésimas de volt) y separación clara, sin superposición, entre agua limpia y agua turbia.
+
+| Prueba | Muestra | Lecturas registradas | Promedio RAW | Rango RAW | Voltaje promedio | Rango de voltaje |
+|---|---|---|---|---|---|---|
+| 1 | Agua limpia | 8 | 2286 | 2284 – 2288 | 2,041 V | 2,040 – 2,043 V |
+| 2 | Agua turbia | 8 | 2221 | 2211 – 2241 | 1,986 V | 1,979 – 2,007 V |
+
+- **Estabilidad:** con el sensor del Avance #2 la misma muestra variaba entre ~70 y ~210 RAW. Con el SEN0189 el agua limpia varió solo 4 RAW (0,003 V) y el agua turbia unos 30 RAW.
+- **Comportamiento físico coherente:** en un sensor óptico, el agua más clara deja pasar más luz al fototransistor y entrega más voltaje (~2,041 V); al enturbiarse, los sólidos bloquean la luz y el voltaje baja (~1,986 V).
+- **Diferenciación:** las dos muestras no se superponen; hay ≈65 RAW (≈0,055 V) de diferencia entre sus promedios.
+
+**Umbrales propuestos** (a partir de estas dos muestras; deben confirmarse con más pruebas):
+
+| Voltaje | Estado |
+|---|---|
+| ≥ 2,030 V | Agua clara |
+| 2,000 – 2,029 V | Precaución / verificar |
+| < 2,000 V | Agua turbia → alerta |
+
+- **Limitación:** es una sola sesión con una muestra de cada tipo. Quedan pendientes ensayos con niveles intermedios y altos de turbiedad, y repeticiones en distintos días.
 
 Datos: [`testing/datos/pruebas_sen0189_2026-11-20.csv`](testing/datos/pruebas_sen0189_2026-11-20.csv) · Capturas: [`testing/evidencias/`](testing/evidencias/)
 
