@@ -63,3 +63,35 @@ El prototipo ha entregado lecturas RAW, pero las pruebas iniciales todavía no p
 Las mediciones no corresponden a NTU y no permiten determinar potabilidad.
 
 La validación continuará mediante pruebas controladas y verificación eléctrica del montaje.
+
+
+---
+
+10. Actualización Avance #3: nuevo sensor DFRobot SEN0189 (20-11-2026)
+
+Cambios respecto de las pruebas anteriores
+Se reemplazó el sensor inicial por el DFRobot SEN0189 y se mantuvo el promedio de 20 lecturas (cada 10 ms) por GPIO34, con ADC de 12 bits. La sonda se mantuvo quieta y a la misma profundidad.
+
+Resultados
+
+Muestra	Lecturas	Promedio RAW	Rango RAW	Voltaje promedio
+Agua limpia	8	2286	2284 – 2288	2,041 V
+Agua turbia	8	2221	2211 – 2241	1,986 V
+
+Análisis
+La variación dentro de una misma muestra bajó de ~140 RAW (sensor anterior) a 4 RAW en agua limpia y ~30 RAW en agua turbia.
+El agua limpia entrega más voltaje que la turbia, lo que es coherente con un sensor óptico: más claridad deja pasar más luz.
+Las dos muestras no se superponen (≈65 RAW de diferencia entre promedios).
+
+Umbrales propuestos (provisionales)
+≥ 2,030 V: agua clara.
+2,000 – 2,029 V: precaución / verificar.
+< 2,000 V: agua turbia, alerta.
+
+Pendiente
+Repetir con niveles intermedios y altos de turbiedad y en distintos días para confirmar los umbrales.
+
+Conclusión actualizada
+Con el SEN0189 las lecturas son estables y diferencian agua limpia de agua turbia en la sesión realizada. Las mediciones siguen sin corresponder a NTU y no determinan potabilidad.
+
+Datos: testing/datos/pruebas_sen0189_2026-11-20.csv

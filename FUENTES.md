@@ -168,22 +168,22 @@ Registro de las iteraciones del proyecto.
 Documentación del repositorio.
 10. Archivos principales relacionados
 Software
-software/src/Codigo Proyecto
-software/src/Explicacion codigo
+software/src/agua_clara.ino
+software/src/explicacion_codigo.md
 software/src/README.md
 software/README.md
 Diseño 3D
 AguaClara_CajaInferior.stl
 AguaClara_TapaSuperior.stl
-Archivo editable de Autodesk Fusion.
-Plano técnico del encapsulado.
+Archivo editable de Autodesk Fusion: diseno_3d/fusion360/Agua clara Case final.f3d
+Plano técnico del encapsulado: diseno_3d/planos/planos_agua_clara.pdf
 Documentación
 README.md
 FUENTES.md
 Archivos disponibles en la carpeta documentacion/.
 Evidencias disponibles en la carpeta testing/.
 11. Declaración final
-ChatGPT y Microsoft Copilot fueron utilizados como herramientas de apoyo durante el desarrollo de Agua Clara.
+ChatGPT, Microsoft Copilot y Claude (Anthropic) fueron utilizados como herramientas de apoyo durante el desarrollo de Agua Clara. Claude se usó para ordenar y redactar la documentación del repositorio (README y archivos de cada carpeta) a partir de los datos, fotos y textos del equipo.
 
 El equipo revisó y adaptó las respuestas generadas, realizó el montaje físico, ejecutó las pruebas y tomó las decisiones finales de ingeniería.
 

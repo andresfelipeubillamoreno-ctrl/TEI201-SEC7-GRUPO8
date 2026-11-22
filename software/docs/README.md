@@ -1,57 +1,30 @@
-# Documentación de Software
+# Manual de uso – Agua Clara
 
-## Contenido
+## Encendido
+1. Conectar el ESP32 por cable Micro-USB a un computador o cargador USB.
+2. Esperar unos segundos: la OLED muestra "AGUA CLARA", la lectura RAW y el estado.
 
-### Diagramas de Flujo
-Incluir diagramas de las funciones principales del sistema.
+## Medir una muestra
+1. Llenar un vaso con la muestra de agua.
+2. Introducir **solo la sonda** del sensor (nunca el módulo electrónico ni la placa).
+3. Esperar ~1 minuto con la sonda quieta, siempre a la misma profundidad.
+4. Leer el estado en la OLED o en el celular.
 
-**Formato:** PNG, PDF o draw.io
+## Ver los datos en el celular
+1. Conectarse a la red Wi-Fi **AguaClara** (contraseña `aguaclara123`).
+2. Abrir el navegador en `http://192.168.4.1`.
+3. La página se actualiza sola cada 3 segundos: verde = baja turbiedad, amarillo = verificar, rojo = turbiedad elevada.
 
-### Documentación de Funciones
+## Apagado
+Desconectar el cable USB. Secar la sonda antes de guardarla.
 
-#### Funciones Principales
+## Solución de problemas
 
-**función1()**
-- **Propósito:** [Descripción]
-- **Parámetros:** [Tipo y descripción]
-- **Retorna:** [Tipo y descripción]
-- **Ejemplo de uso:**
-```cpp
-// Código de ejemplo
-```
+| Problema | Causa probable | Solución |
+|---|---|---|
+| La OLED no muestra nada | Cables SDA/SCL sueltos o dirección I2C distinta | Revisar GPIO19 (SDA) y GPIO18 (SCL); el monitor serial dice "OLED no detectada" |
+| No aparece la red AguaClara | El ESP32 no inició o se reinició | Revisar el monitor serial (115200 baud) y la alimentación |
+| Lecturas que saltan mucho | Conexión floja o sonda moviéndose | Revisar cables del sensor y el divisor de voltaje; mantener la sonda quieta |
+| Siempre el mismo estado | Umbrales no calibrados | Ajustar `LIMITE_1` y `LIMITE_2` según las pruebas |
 
----
-
-## Manual de Instalación
-
-[Paso a paso detallado para instalar y configurar el software]
-
----
-
-## Manual de Operación
-
-### Encendido del Sistema
-1. [Paso 1]
-2. [Paso 2]
-
-### Operación Normal
-1. [Paso 1]
-2. [Paso 2]
-
-### Apagado del Sistema
-1. [Paso 1]
-2. [Paso 2]
-
----
-
-## Troubleshooting
-
-### Problemas Comunes
-
-**Problema 1: No conecta a WiFi**
-- Causa probable: [Explicación]
-- Solución: [Pasos]
-
-**Problema 2: Sensor no responde**
-- Causa probable: [Explicación]
-- Solución: [Pasos]
+⚠️ El resultado es una alerta preliminar de turbiedad: **no certifica que el agua sea potable**.

@@ -51,6 +51,8 @@ Los límites 2800/1800 son **provisionales para la simulación**. No son valores
 
 En la placa física Circuito UAI ya funcionan ESP32, OLED, red Wi-Fi local `AguaClara`, página en `192.168.4.1` y dos relés, durante una prueba continua de 5 minutos **con datos simulados**. La sonda real de turbiedad todavía no entregó diferencias confiables entre muestras; sigue en diagnóstico o pendiente de reemplazo.
 
+> **Actualización (Avance #3):** el sensor fue reemplazado por el DFRobot SEN0189, que ya entrega lecturas estables y diferencia agua limpia de agua turbia. Ver [`testing/`](../../testing/).
+
 **Wokwi no expone automáticamente una red Wi-Fi `AguaClara` al teléfono.** El programa de esta carpeta se centra en el diagrama eléctrico, lectura analógica simulada, OLED y actuadores. El sistema web local se comprobó en la placa real con otro sketch. Publicar el proyecto en Wokwi **no equivale** a validar el sensor ni la conectividad en condiciones reales.
 
 ## Archivos

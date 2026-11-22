@@ -1,38 +1,14 @@
-# Bill of Materials (BOM)
+# Lista de materiales (BOM)
 
-## Formato del Archivo
+**Costo total del prototipo: ≈ $25.000 CLP**
 
-El archivo BOM debe incluir las siguientes columnas:
+| Categoría | Costo (CLP) | Detalle |
+|---|---|---|
+| Microcontrolador | $0 | Placa ESP32 con relés integrados (Circuito UAI) |
+| Sensores | $13.000 | Sensor de turbiedad DFRobot SEN0189 con módulo |
+| Actuadores | $0 | Relés incluidos en la placa |
+| Estructura / encapsulado | $0 | — |
+| Otros | $12.000 | Pantalla OLED, resistencias, protoboard, cables Dupont y cable Micro-USB |
+| **Total** | **$25.000** | |
 
-| Columna | Descripción | Ejemplo |
-|---------|-------------|---------|
-| Cantidad | Número de unidades | 1 |
-| Componente | Nombre descriptivo | ESP32 DevKit V1 |
-| Especificación | Detalles técnicos | 30 pines, WiFi+BT |
-| Fabricante | Marca del componente | Espressif |
-| Código/SKU | Identificador único | ESP32-WROOM-32 |
-| Proveedor | Tienda/distribuidor | AliExpress, MercadoLibre |
-| Precio Unitario | Costo por unidad (CLP) | $8,990 |
-| Precio Total | Cantidad × Precio | $8,990 |
-| Datasheet | Link a especificaciones | [URL] |
-
----
-
-## Archivos a Incluir
-
-- `bom_completo.xlsx` - Lista completa de materiales
-- `bom_completo.pdf` - Versión PDF para visualización
-- `datasheets/` - Carpeta con PDFs de componentes críticos
-
----
-
-## Presupuesto Total
-
-**Costo Total Estimado:** $[25.000] CLP
-
-### Desglose por Categoría
-- Microcontrolador: $0
-- Sensores: $13.000
-- Actuadores: $0
-- Estructura/Encapsulado: $0
-- Otros: $12.000
+Componentes y conexiones: [`../componentes_y_conexiones.md`](../componentes_y_conexiones.md)

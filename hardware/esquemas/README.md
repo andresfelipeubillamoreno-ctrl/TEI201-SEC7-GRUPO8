@@ -1,25 +1,10 @@
-# Esquemas de Circuito
+# Esquemas del circuito
 
-## Archivos Requeridos
+El circuito está representado en la simulación de Wokwi:
 
-### Formato Fritzing
-- `circuito_completo.fzz` - Archivo fuente Fritzing
-- `esquema_circuito.png` - Exportación del esquema
-- `pcb_layout.png` - (opcional) Layout de PCB
+- Diagrama: [`software/simulacion_wokwi/diagram.json`](../../software/simulacion_wokwi/diagram.json)
+- Explicación: [`software/simulacion_wokwi/README.md`](../../software/simulacion_wokwi/README.md)
 
-### Formato Wokwi
-- `wokwi_diagram.json` - Archivo de proyecto Wokwi
-- `wokwi_screenshot.png` - Captura del circuito
-- `wokwi_link.txt` - URL del proyecto online
+En la simulación, un potenciómetro reemplaza la salida analógica del sensor de turbiedad.
 
----
-
-## Nomenclatura de Archivos
-- Usar nombres descriptivos
-- Incluir versión: `v3_esquema_final.fzz`
-- Fecha en formato: `YYYYMMDD_descripcion`
-
----
-
-## Notas de Diseño
-[Explicar decisiones importantes de diseño del circuito]
+Conexiones reales del prototipo: [`../componentes_y_conexiones.md`](../componentes_y_conexiones.md) y la tabla de pines en [`../README.md`](../README.md).

@@ -1,93 +1,28 @@
-# Testing y Validación
+# Testing y validación
 
-## Objetivo
-Validar el funcionamiento del prototipo con usuarios reales y medir el impacto cuantitativo en la problemática ODS seleccionada.
+Objetivo: comprobar que el prototipo detecta cambios relativos de turbiedad con lecturas estables y repetibles.
 
----
+| Carpeta | Contenido |
+|---|---|
+| [`reportes/`](reportes/) | Reporte de testing (Avance #2 y Avance #3) |
+| [`datos/`](datos/) | Datos de las pruebas en CSV |
+| [`evidencias/`](evidencias/) | Fotos del sensor en la muestra y del monitor serial |
 
-## 📁 Carpetas
+## Resumen de resultados
 
-#### `reportes/`
-Documentos con resultados del testing
+| Avance | Sensor | Agua limpia | Agua turbia | Estabilidad |
+|---|---|---|---|---|
+| #2 | Sensor óptico inicial | < 70 y ≈ 210 RAW (según sesión) | 109,69 y ≈ 195 RAW | No repetible: la relación limpia/turbia se invirtió entre sesiones |
+| #3 | DFRobot SEN0189 | 2286 RAW · 2,041 V | 2221 RAW · 1,986 V | Variación de 4 RAW (limpia) y ~30 RAW (turbia); muestras sin superposición |
 
-#### `evidencias/`
-Fotos y videos de sesiones con usuarios
+## Método (Avance #3)
 
-#### `datos/`
-Datos cuantitativos recolectados
+- ESP32 Dev Module, ADC de 12 bits (0–4095) por GPIO34.
+- Cada lectura es el promedio de 20 muestras tomadas cada 10 ms, reportada cada ~1 s en el monitor serial.
+- Sonda sumergida en la muestra, quieta y a la misma profundidad.
 
----
+## Limitaciones
 
-## Metodología de Testing
-
-### Grupo Objetivo
-- **Perfil de usuarios:** [Descripción]
-- **Cantidad mínima:** 5 usuarios
-- **Ubicación:** [Contexto real de uso]
-
-### Protocolo de Testing
-1. **Briefing** (5 min)
-   - Explicar propósito del prototipo
-   - Contexto de uso
-
-2. **Sesión de Uso** (15-20 min)
-   - Usuario interactúa con prototipo
-   - Observación sin intervención
-   - Toma de notas
-
-3. **Entrevista Post-Testing** (10 min)
-   - Preguntas sobre experiencia
-   - Feedback cualitativo
-   - Sugerencias de mejora
-
-4. **Encuesta Cuantitativa** (5 min)
-   - Escala Likert (1-5)
-   - Métricas específicas
-
----
-
-## Métricas de Evaluación
-
-### Usabilidad
-- Facilidad de uso (1-5)
-- Claridad de funcionamiento (1-5)
-- Satisfacción general (1-5)
-
-### Impacto ODS
-- [Métrica específica 1 relacionada con ODS]
-- [Métrica específica 2 relacionada con ODS]
-- [Métrica específica 3 relacionada con ODS]
-
-### Desempeño Técnico
-- Tiempo de respuesta del sistema
-- Tasa de errores
-- Confiabilidad
-
----
-
-## Análisis de Resultados
-
-### Cuantitativo
-- Promedios y desviaciones estándar
-- Gráficos de resultados
-- Comparación con baseline
-
-### Cualitativo
-- Temas recurrentes en feedback
-- Problemas identificados
-- Sugerencias de mejora
-
----
-
-## Validación de Impacto ODS
-
-**ODS Seleccionado:** [Número y nombre]
-
-**Meta específica del proyecto:** [Describir]
-
-**Indicadores de impacto:**
-1. [Indicador 1] - Baseline: [X], Meta: [Y], Alcanzado: [Z]
-2. [Indicador 2] - Baseline: [X], Meta: [Y], Alcanzado: [Z]
-
-**Proyección de impacto a escala:**
-[Si el prototipo se despliega en toda la ciudad/comunidad, cuál sería el impacto estimado]
+- Una sesión con una muestra de cada tipo; faltan niveles intermedios y repeticiones en distintos días.
+- Las lecturas son valores RAW/voltaje, **no NTU**, y no determinan potabilidad.
+- No se realizaron todavía pruebas con usuarios del grupo objetivo.

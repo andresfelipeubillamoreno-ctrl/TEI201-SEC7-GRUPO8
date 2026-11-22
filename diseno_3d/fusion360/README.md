@@ -1,60 +1,10 @@
-# Archivos Fusion 360
+# Archivos de Fusion 360
 
-## Archivos Requeridos
+| Archivo | Descripción |
+|---|---|
+| `Encapsulado_Agua_Clara_v01.f3d` | Versión inicial (Avance #2) |
+| `Agua clara Case final.f3d` | Case final (Avance #3): caja inferior y tapa superior independientes |
 
-### `modelo_completo_v3.f3d`
-Archivo principal con **historial de cambios completo**
+**Cómo abrir:** Autodesk Fusion → *File > Open* → *Open from my computer* → seleccionar el `.f3d`.
 
-**DEBE INCLUIR:**
--  Todos los componentes modelados
--  Ensamble completo funcional
--  Historial de diseño (timeline)
--  Materiales asignados
--  Constraints y relaciones
-
----
-
-## Estructura del Modelo
-
-### Componentes (Components)
-```
-Ensamble_Principal
-├── Encapsulado_Inferior
-├── Encapsulado_Superior
-├── ESP32_DevKit
-├── Sensor_DHT22
-├── LED_Indicador
-├── Soporte_Bateria
-├── Bracket_Montaje
-└── Tornilleria
-```
-
-### Uniones (Joints)
-Documentar las juntas principales y sus restricciones
-
-### Parámetros
-Listar parámetros principales utilizados:
-- `ancho_total = 120mm`
-- `alto_total = 80mm`
-- `grosor_pared = 2mm`
-
----
-
-## Instrucciones de Apertura
-
-1. Abrir Fusion 360
-2. File > Open > Seleccionar archivo `.f3d`
-3. Verificar que todas las referencias están cargadas
-4. Revisar timeline para ver historial
-
----
-
-## Versiones
-
-| Versión | Fecha | Cambios Principales |
-|---------|-------|---------------------|
-| v3.0 | [Fecha] | Versión final para Avance #3 |
-| v2.1 | [Fecha] | Ajustes post Avance #2 |
-| v1.0 | [Fecha] | Primera versión funcional |
-
----
+Para imprimir: exportar cada cuerpo como STL (*File > 3D Print* o clic derecho sobre el cuerpo → *Save as Mesh*) e imprimir en PLA.

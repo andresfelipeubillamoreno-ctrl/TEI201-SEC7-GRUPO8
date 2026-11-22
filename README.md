@@ -144,9 +144,10 @@ Para la entrega final se consolidó el ciclo de datos (captura → procesamiento
 - **Diagnóstico previo:** la carcasa v1 estaba ajustada al sensor antiguo y no tenía holguras para ordenar cables ni acceso rápido para mantenimiento.
 - **Modificación:** se rediseñó la caja en Fusion 360 ([`diseno_3d/`](diseno_3d/)), adaptada al nuevo sensor, con un **gemelo 3D** que incluye los volúmenes reales de todos los componentes internos (ESP32, sensor, OLED y cableado).
 - **Impacto técnico:**
-  - **Diseño para la reparación:** sin pegamentos; la tapa superior usa tornillos y conectores modulares (Dupont/JST), lo que permite abrir el encapsulado y cambiar cualquier componente en menos de 2 minutos.
-  - **Protección y estanqueidad:** la electrónica de control queda aislada de la zona de inmersión de la sonda, evitando cortocircuitos por humedad.
-  - **Planos técnicos:** cotas funcionales, tolerancias de impresión 3D y vistas ortogonales actualizadas ([`diseno_3d/planos/`](diseno_3d/planos/)).
+  - **Diseño para la reparación:** sin pegamentos; caja inferior y tapa superior son piezas independientes y la tapa es desmontable (encaja con un reborde y 0,4 mm de holgura por lado). Las conexiones con cables Dupont permiten abrir el case y cambiar componentes sin dañar la estructura.
+  - **Protección:** la electrónica (ESP32, protoboard y módulo del sensor) queda dentro de la caja y solo la sonda sale por una abertura circular hacia la muestra. La tapa tiene una ventana de 25 × 17 mm para la OLED. El case no es impermeable, así que la electrónica debe mantenerse seca.
+  - **Dimensiones:** 170 × 70 × 43 mm exteriores, paredes de 2,5 mm, fondo y tapa de 3 mm; pensado para impresión 3D FDM en PLA.
+  - **Planos técnicos:** cotas y tolerancias de impresión ([`diseno_3d/planos/`](diseno_3d/planos/)).
 
 | Vista exterior | Vista interior | Tapa con OLED |
 |---|---|---|
@@ -195,7 +196,7 @@ Datos: [`testing/datos/pruebas_sen0189_2026-11-20.csv`](testing/datos/pruebas_se
 | Aspecto | Entrega 1 (Avance #2) | Entrega 2 (Avance #3 – Final) |
 |---|---|---|
 | **Sensor de turbiedad** | Sensor inicial con ruido elevado y deriva en las lecturas | Nuevo sensor óptico integrado, calibrado y estabilizado |
-| **Encapsulado 3D** | Carcasa v1 ajustada al montaje preliminar | Caja rediseñada con gemelo 3D completo y apertura desmontable |
+| **Encapsulado 3D** | Carcasa v1 ajustada al montaje preliminar | Caja rediseñada (170 × 70 × 43 mm) con tapa desmontable y ventana para la OLED |
 | **Visualización y datos** | Lectura local en OLED y monitor serial | OLED + página web por Wi-Fi en tiempo real, con estados de alerta |
 | **Documentación y BOM** | Estructura base y componentes sin costos | BOM con costos (≈ $25.000 CLP), planos acotados, nuevas fotos y [`FUENTES.md`](FUENTES.md) |
 
@@ -223,7 +224,7 @@ Datos: [`testing/datos/pruebas_sen0189_2026-11-20.csv`](testing/datos/pruebas_se
 | Relé 2 | GPIO15 |
 | GND | Tierras unificadas, con la potencia del relé aislada para evitar reinicios de la placa |
 
-Detalle completo en [`hardware/Componentes y conexiones`](hardware/).
+Detalle completo en [`hardware/componentes_y_conexiones.md`](hardware/componentes_y_conexiones.md).
 
 ---
 
@@ -233,10 +234,10 @@ Detalle completo en [`hardware/Componentes y conexiones`](hardware/).
 |---|---|
 | [`software/`](software/) | Código del ESP32 (`src/`) y simulación en Wokwi (`simulacion_wokwi/`) |
 | [`hardware/`](hardware/) | Componentes, conexiones, fotos del montaje y BOM |
-| [`testing/`](testing/) | Reporte de testing, datos (`pruebas_iniciales.csv`) y evidencias |
+| [`testing/`](testing/) | Reporte de testing, datos en CSV y evidencias fotográficas |
 | [`iteraciones/`](iteraciones/) | Problemas, cambios y aprendizajes de cada iteración |
 | [`diseno_3d/`](diseno_3d/) | Archivos de Fusion 360, renders y planos del encapsulado |
-| [`documentacion/`](documentacion/) | Informe del proyecto y presentación |
+| [`documentacion/`](documentacion/) | Informe del proyecto (`.docx`) y presentación (`.pptx`) |
 | [`FUENTES.md`](FUENTES.md) | Declaración de fuentes |
 
 ---

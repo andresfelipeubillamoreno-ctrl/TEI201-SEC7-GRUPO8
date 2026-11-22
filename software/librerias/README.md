@@ -1,47 +1,15 @@
 # Librerías
 
-## Librerías Estándar (Arduino IDE)
+No se usan librerías personalizadas. Todas se instalan desde Arduino IDE.
 
-Instalar desde el Library Manager de Arduino IDE:
+| Librería | Origen | Uso |
+|---|---|---|
+| `WiFi.h` | Incluida en el paquete esp32 (Espressif) | Crear la red Wi-Fi "AguaClara" (modo punto de acceso) |
+| `WebServer.h` | Incluida en el paquete esp32 | Servir la página web con el estado del agua |
+| `Wire.h` | Incluida en el paquete esp32 | Comunicación I2C con la OLED |
+| `Adafruit GFX Library` | Library Manager | Gráficos y texto para la pantalla |
+| `Adafruit SSD1306` | Library Manager | Controlador de la OLED 128×64 |
 
-1. **[Nombre Librería 1]** - v[X.X.X]
-   - Propósito: [Descripción]
-   - Instalación: `Sketch > Include Library > Manage Libraries > Buscar "[nombre]"`
+**Paquete de placa:** `esp32 by Espressif Systems` (Boards Manager), placa **ESP32 Dev Module**.
 
-2. **[Nombre Librería 2]** - v[X.X.X]
-   - Propósito: [Descripción]
-   - Instalación: [Instrucciones]
-
----
-
-## Librerías Personalizadas/Modificadas
-
-Si hay librerías modificadas o no disponibles en Arduino IDE, incluir en esta carpeta:
-
-### Estructura
-```
-librerias/
-├── MiLibreria/
-│   ├── MiLibreria.h
-│   ├── MiLibreria.cpp
-│   ├── keywords.txt
-│   └── README.md
-```
-
-### Instalación Manual
-```bash
-# Copiar carpeta a Arduino libraries
-cp -r MiLibreria ~/Documents/Arduino/libraries/
-```
-
----
-
-## Dependencias Completas
-
-Listar TODAS las librerías necesarias con versiones exactas:
-
-| Librería | Versión | Fuente | Obligatoria |
-|----------|---------|--------|-------------|
-| WiFi | Built-in | ESP32 Core | ✅ |
-| [Lib 1] | x.x.x | Arduino Library Manager | ✅ |
-| [Lib 2] | x.x.x | GitHub | ❌ |
+Instalación: `Sketch > Include Library > Manage Libraries…` y buscar cada nombre.

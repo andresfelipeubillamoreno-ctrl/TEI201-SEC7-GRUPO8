@@ -1,73 +1,39 @@
-# Diseño 3D - Documentación
+# Diseño 3D – Encapsulado Agua Clara
 
-## ⚠️ REQUISITO CRÍTICO
+Encapsulado diseñado en **Autodesk Fusion** para proteger la electrónica y dejar solo la sonda del sensor en contacto con el agua.
 
-El modelo 3D debe incluir **TODOS** los componentes del prototipo:
-- ✅ Encapsulado exterior completo
-- ✅ Placa ESP32/Arduino (con dimensiones exactas)
-- ✅ Todos los sensores en posición de instalación
-- ✅ Todos los actuadores
-- ✅ Batería / fuente de alimentación
-- ✅ Cableado (routing aproximado)
-- ✅ Sistema de montaje (brackets, tornillos)
-- ✅ Orificios de ventilación (si aplica)
+| Carpeta | Contenido |
+|---|---|
+| [`fusion360/`](fusion360/) | Archivos editables `.f3d` (versión inicial y case final) |
+| [`renders/`](renders/) | Vistas exterior, interior y de la tapa con la OLED |
+| [`planos/`](planos/) | Plano técnico en PDF y medidas del case |
 
-**NO ES ACEPTABLE:** Solo el encapsulado vacío sin componentes internos
+## Especificaciones (case final)
 
----
+| | |
+|---|---|
+| Dimensiones exteriores | 170 × 70 × 43 mm |
+| Espacio interior útil | 165 × 65 × 40 mm |
+| Paredes / fondo / tapa | 2,5 mm / 3 mm / 3 mm |
+| Piezas | Caja inferior + tapa superior desmontable |
+| Ventana OLED | 25 × 17 mm en la tapa |
+| Fabricación | Impresión 3D FDM, PLA, tolerancia ±0,3 mm, holgura de encaje 0,4 mm por lado |
+| Unidades | Milímetros, escala 1:1 |
 
-## Carpetas
+## Evolución
 
-#### `fusion360/`
-Archivos nativos de Fusion 360 (.f3d)
+| Versión | Archivo | Cambio |
+|---|---|---|
+| v01 (Avance #2) | `Encapsulado_Agua_Clara_v01.f3d` | Modelo conceptual ajustado al montaje preliminar |
+| Final (Avance #3) | `Agua clara Case final.f3d` | Rediseño para el sensor SEN0189: más espacio interior para cables, tapa desmontable, ventana para la OLED y salida para la sonda |
 
-#### `renders/`
-Imágenes renderizadas de alta calidad
+## Renders
 
-#### `planos/`
-Planos técnicos con cotas
+| Exterior | Interior | Tapa con OLED |
+|---|---|---|
+| ![](renders/vista_exterior.png) | ![](renders/vista_interior.png) | ![](renders/vista_tapa_oled.png) |
 
----
+## Pendientes de diseño
+Según [`planos/medidas.md`](planos/medidas.md): soportes internos para la placa, fijación de la OLED, cierre de la tapa y verificación con los componentes físicos.
 
-## Especificaciones
-
-**Software:** Autodesk Fusion 360  
-**Unidades:** Milímetros (mm)  
-**Escala:** 1:1 (dimensiones reales)
-
-**Dimensiones externas:** [X mm × Y mm × Z mm]  
-**Peso estimado:** [XXX gramos]  
-**Material:** [PLA, ABS, PETG, etc.]
-
----
-
-## Consideraciones de Diseño
-
-### Funcionales
-- [ ] Acceso a puertos USB/alimentación
-- [ ] Ventilación adecuada
-- [ ] Protección de componentes
-- [ ] Fácil acceso para mantenimiento
-- [ ] Resistencia a condiciones ambientales
-
-### Fabricación
-- [ ] Imprimible sin soportes excesivos
-- [ ] Tolerancias de ensamble (+0.2mm)
-- [ ] Grosor de pared mínimo 2mm
-- [ ] Sin ángulos imposibles (overhangs <45°)
-
----
-
-## Configuración de Impresión 3D (si fue utilizada)
-
-**Impresora:** [Modelo]  
-**Material:** [PLA/ABS/PETG]  
-**Calidad de capa:** 0.2mm  
-**Relleno:** 20-30%  
-**Soportes:** [Sí/No - dónde]  
-**Temperatura nozzle:** [°C]  
-**Temperatura cama:** [°C]  
-**Velocidad:** [mm/s]
-
-**Tiempo estimado de impresión:** [X horas]  
-**Peso de material:** [X gramos]
+⚠️ El case **no es impermeable**: la electrónica debe mantenerse seca.

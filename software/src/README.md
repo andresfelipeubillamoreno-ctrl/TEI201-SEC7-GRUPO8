@@ -1,57 +1,16 @@
-# Código Fuente
+# Código fuente
 
-## Archivos Principales
+| Archivo | Descripción |
+|---|---|
+| [`agua_clara.ino`](agua_clara.ino) | Código principal: lectura del sensor, estados, OLED, relés (desactivados) y servidor web |
+| [`explicacion_codigo.md`](explicacion_codigo.md) | Explicación de librerías, variables y funciones |
 
-### `main.ino`
-Archivo principal del proyecto Arduino/ESP32
+## Estructura del código
 
-**Estructura:**
-- Setup: Inicialización del sistema
-- Loop: Ciclo principal de ejecución
-
-### Otros archivos (si aplica)
-- `config.h` - Configuraciones y constantes
-- `sensores.h` / `sensores.cpp` - Funciones de sensores
-- `actuadores.h` / `actuadores.cpp` - Control de actuadores
-- `comunicacion.h` / `comunicacion.cpp` - WiFi/Bluetooth
-
----
-
-## Estándares de Código
-
-### Comentarios
-```cpp
-// Comentarios en español
-// Explicar QUÉ hace y POR QUÉ (no solo el CÓMO)
-
-/**
- * Función: leerTemperatura
- * Descripción: Lee temperatura del sensor DHT22
- * Retorna: float - Temperatura en grados Celsius
- */
-float leerTemperatura() {
-  // código
-}
-```
-
-### Nombres de Variables
-- Variables: `camelCase`
-- Constantes: `UPPER_SNAKE_CASE`
-- Funciones: `camelCase()`
-
----
-
-## Testing y Debugging
-
-### Modo Debug
-Descomentar para activar modo debug:
-```cpp
-#define DEBUG true
-```
-
-### Monitor Serial
-- Baudrate: 115200
-- Mensajes informativos con prefijos:
-  - `[INFO]` - Información general
-  - `[ERROR]` - Errores
-  - `[DEBUG]` - Debug
+- `leerSensor()` – promedio de 20 lecturas analógicas de GPIO34
+- `calcularEstado()` / `nombreEstado()` – clasificación en tres estados
+- `actualizarReles()` – control de relés (solo si `USAR_RELES = true`)
+- `actualizarOLED()` – muestra lectura y estado en la pantalla
+- `crearPagina()` – arma la página web con color según el estado
+- `setup()` – inicia serial, ADC de 12 bits, OLED, red Wi-Fi y servidor
+- `loop()` – lee y actualiza cada ~1 s usando temporizadores (sin `delay()` largos)
