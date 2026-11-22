@@ -1,0 +1,17 @@
+fecha,hora_captura,sensor,muestra,lectura_n,lectura_raw,voltaje_v
+2026-11-20,15:46,DFRobot SEN0189,agua limpia,1,2215,1.983
+2026-11-20,15:46,DFRobot SEN0189,agua limpia,2,2214,1.982
+2026-11-20,15:46,DFRobot SEN0189,agua limpia,3,2241,2.007
+2026-11-20,15:46,DFRobot SEN0189,agua limpia,4,2227,1.986
+2026-11-20,15:46,DFRobot SEN0189,agua limpia,5,2211,1.979
+2026-11-20,15:46,DFRobot SEN0189,agua limpia,6,2219,1.983
+2026-11-20,15:46,DFRobot SEN0189,agua limpia,7,2221,1.986
+2026-11-20,15:46,DFRobot SEN0189,agua limpia,8,2218,1.985
+2026-11-20,15:44,DFRobot SEN0189,agua turbia,1,2288,2.043
+2026-11-20,15:44,DFRobot SEN0189,agua turbia,2,2285,2.040
+2026-11-20,15:44,DFRobot SEN0189,agua turbia,3,2284,2.040
+2026-11-20,15:44,DFRobot SEN0189,agua turbia,4,2287,2.042
+2026-11-20,15:44,DFRobot SEN0189,agua turbia,5,2286,2.040
+2026-11-20,15:44,DFRobot SEN0189,agua turbia,6,2285,2.040
+2026-11-20,15:44,DFRobot SEN0189,agua turbia,7,2288,2.042
+2026-11-20,15:44,DFRobot SEN0189,agua turbia,8,2288,2.043

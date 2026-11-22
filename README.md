@@ -159,6 +159,21 @@ Para la entrega final se consolidó el ciclo completo de datos (captura → alma
   - **Persistencia y visualización:** los datos quedan guardados históricamente y se grafican en tiempo real con umbrales visuales de advertencia.
   - **Protocolo de validación:** nuevas pruebas comparativas con agua limpia y distintos grados de turbiedad, que muestran la reducción de ruido frente al Avance #2 y permiten tomar decisiones concretas sobre el agua.
 
+#### Resultados con el sensor DFRobot SEN0189 (20-11-2026)
+
+Lectura = promedio de 20 muestras del ADC (12 bits) por GPIO34, registrada en el monitor serial cada ~1 s.
+
+| Muestra | Lecturas registradas | Promedio RAW | Rango RAW | Voltaje promedio |
+|---|---|---|---|---|
+| Agua limpia | 8 | 2221 | 2211 – 2241 | 1,986 V |
+| Agua turbia | 8 | 2286 | 2284 – 2288 | 2,041 V |
+
+- **Estabilidad:** con el sensor anterior la misma muestra variaba entre ~70 y ~210 RAW; con el SEN0189 la variación dentro de cada muestra es de pocas unidades (≈1 % en agua limpia y ≈0,2 % en agua turbia).
+- **Diferenciación:** las dos muestras dan lecturas distintas y que no se superponen (≈65 RAW de diferencia).
+- **Limitación:** es una sola sesión con una muestra de cada tipo. Para fijar umbrales confiables se deben repetir las pruebas con más muestras y distintos niveles de turbiedad.
+
+Datos: [`testing/datos/pruebas_sen0189_2026-11-20.csv`](testing/datos/pruebas_sen0189_2026-11-20.csv) · Capturas: [`testing/evidencias/`](testing/evidencias/)
+
 ---
 
 ## 8. Comparación Avance #2 vs. Entrega Final
